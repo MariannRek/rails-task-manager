@@ -1,8 +1,13 @@
-<h1>My tasks</h1>
+<h1 class="p-2">My tasks</h1>
 
-<ul>
+<ul style="list-style-type: none;" class="p-4">
   <% @tasks.each do |task| %>
     <li>
+      <% if task.completed %>
+        <i class="fa-regular fa-square-check"></i>
+      <% else %>
+        <i class="fa-regular fa-square"></i>
+      <% end %>
       <%= link_to task.title, task_path(task.id) %>
       <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe,
           task_path(task),
@@ -13,4 +18,4 @@
   <% end %>
 </ul>
 
-<div><%= link_to 'Add an new task', new_task_path %></div>
+<div class="p-2"><%= link_to 'Add an new task', new_task_path %></div>
